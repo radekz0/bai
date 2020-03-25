@@ -10,7 +10,7 @@
     <h1>Shopping List</h1>
     <p>
         New item: <input type="text" name="item">
-        <button type="button">Add</button>
+        <button type="button" onclick="copyText()">Add</button>
     </p>
     <h3>List of items</h3>
     <ol>
@@ -20,7 +20,18 @@
     </ol>
 
     <script>
-    	// a JavaScript code here ...
+        // a JavaScript code here ...
+        function copyText() {
+            let inputBox = document.getElementsByTagName("input")[0];
+            inputBox.select();
+            inputBox.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+            let shoppingList = document.getElementsByTagName("ol")[0];
+            let liElement = document.createElement("li");
+            let textItem = document.createTextNode(inputBox.value);
+            liElement.appendChild(textItem);
+            shoppingList.appendChild(liElement);
+          }
 
     </script>
 </body>
