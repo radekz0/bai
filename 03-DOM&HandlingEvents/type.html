@@ -24,7 +24,29 @@
 		
 		<script>
 			// a JavaScript code here ...
-			
+			let box = document.getElementsByTagName("textarea")[0];
+			box.addEventListener("click", () => {
+				window.setTimeout(wordCounter, 30000);
+			}, {once : true});
+			function wordCounter() {
+				box.select();
+				box.setSelectionRange(0, 99999)
+				document.execCommand("copy");
+
+				let textInBox = box.value;
+				let charCount = textInBox.length;
+				let wordCount = textInBox.split(" ").length;
+
+				let charCountParagraph = document.createElement("p");
+				let wordCountParagraph = document.createElement("p");
+				let charCountParagraphText = document.createTextNode("You managed to type: " + charCount + " characters in 30 seconds.");
+				let wordCountParagraphText = document.createTextNode("You managed to type: " + wordCount + " words in 30 seconds.");
+				charCountParagraph.appendChild(charCountParagraphText);
+				wordCountParagraph.appendChild(wordCountParagraphText);
+				document.body.appendChild(charCountParagraph);
+				document.body.appendChild(wordCountParagraph);
+				box.readOnly = true;
+			}
 		</script>
 		
 	</body>
