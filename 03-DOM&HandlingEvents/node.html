@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+	<style>
+		td {
+		  border: 1px solid black;
+		  height: 50px;
+		  width: 150px;
+		  text-align: center;
+		}
+	</style>
 	<head>
 		<title>Create DOM elements</title>
 		<meta charset="UTF-8">
@@ -7,7 +15,38 @@
 	<body>
 		<script>
 			// a JavaScript code here ...
-			
+			let t = document.createElement("TABLE");
+			t.setAttribute("id", "table");
+			document.body.appendChild(t);
+
+			let tr1 = document.createElement("TR");
+			tr1.setAttribute("id", "row1");
+			document.getElementById("table").appendChild(tr1);
+
+			let tr2 = document.createElement("TR");
+			tr2.setAttribute("id", "row2");
+			document.getElementById("table").appendChild(tr2);
+
+			let tr1FirstVal = document.createElement("TD");
+			let tr1FirstValText = document.createTextNode("1");
+			tr1FirstVal.appendChild(tr1FirstValText);
+
+			let tr1SecondVal = document.createElement("TD");
+			let tr1SecondValText = document.createTextNode("2");
+			tr1SecondVal.appendChild(tr1SecondValText);
+
+			var tr2FirstVal = document.createElement("TD");
+			var tr2FirstValText = document.createTextNode("3");
+			tr2FirstVal.appendChild(tr2FirstValText);
+
+			var tr2SecondVal = document.createElement("TD");
+			var tr2SecondText = document.createTextNode("4");
+			tr2SecondVal.appendChild(tr2SecondText);
+
+			document.getElementById("row1").appendChild(tr1FirstVal);
+			document.getElementById("row1").appendChild(tr1SecondVal);
+			document.getElementById("row2").appendChild(tr2FirstVal);
+			document.getElementById("row2").appendChild(tr2SecondVal);
 		</script>
 	</body>
 </html>
