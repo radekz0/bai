@@ -19,8 +19,14 @@
         <li>bread</li>
     </ol>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         // a JavaScript code here ...
+
+        $("ol").on('dblclick', 'li', function() {
+            $(this).remove();
+        });
+
         function copyText() {
             let inputBox = document.getElementsByTagName("input")[0];
             inputBox.select();
@@ -31,7 +37,7 @@
             let textItem = document.createTextNode(inputBox.value);
             liElement.appendChild(textItem);
             shoppingList.appendChild(liElement);
-          }
+        }
 
     </script>
 </body>
