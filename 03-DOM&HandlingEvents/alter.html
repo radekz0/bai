@@ -4,7 +4,7 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
+	<body ondblclick="yellowBackground()">
 		<h1>Another Brick in the Wall</h1>
 		<h3>Pink Floyd</h3>
 		<p>We don't need no education<br>
@@ -21,6 +21,42 @@
 		
 		<script>
 			// a JavaScript code here ...
+			let songName = document.getElementsByTagName("h1")[0];
+			songName.addEventListener('click', appendSongName, {once : true});
+			function appendSongName(){
+				let text = document.createTextNode(" (Part 2)");
+				songName.appendChild(text);
+			}
+			
+			let bandName = document.getElementsByTagName("h3")[0];
+			bandName.addEventListener('click', showDescription);
+			function showDescription(){
+				let description = document.getElementsByTagName("p")[1];
+				description.style.visibility = "visible";
+			}
+			
+			let lyrics = document.getElementsByTagName("p")[0];
+			lyrics.addEventListener("click", italicTextStyle);
+			function italicTextStyle() {
+				lyrics.style.fontStyle = "italic";
+			}
+
+			function yellowBackground() {
+				document.body.style.backgroundColor = "yellow";
+			}
+			
+			let lyrics2 = document.getElementsByTagName("p")[0];
+			lyrics2.addEventListener('copy', () => {
+				window.alert("You can't copy song's text due to copyright protection.");
+			});
+			let description2 = document.getElementsByTagName("p")[1];
+			description2.addEventListener('click', () => {
+				let x = document.createElement("IMG");
+				x.setAttribute("src", "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg");
+				x.setAttribute("width", "304");
+				x.setAttribute("height", "228");
+				document.body.appendChild(x);
+			}, {once : true});
 			
 		</script>
 	</body>
