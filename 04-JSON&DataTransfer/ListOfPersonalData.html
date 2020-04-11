@@ -7,20 +7,23 @@
 	<body>
 		<h1>People</h1>
 		<p>Click the button to get a list of people from people.json file.</p>
-		<input type="button" value="Display people.json data" onclick="init()">
+        <input type="button" value="Display people.json data" onclick="init()">
+        <p>-----------------------------------------------------------------------</p>
 
 		<script>
 			function init() {
 				getName(function(response) {
                     let name = JSON.parse(response);
                     for(i in name){
-                        let inputElement = document.getElementsByTagName("p")[0];
+                        let inputElement = document.getElementsByTagName("p")[1];
                         let pElement = document.createElement("p");
                         let textItem = document.createTextNode(name[i].name + " " + name[i].surname + ", " + name[i].country);
                         pElement.appendChild(textItem);
                         inputElement.appendChild(pElement);
                     }
-				});
+                });
+                let buttonEl = document.getElementsByTagName("input")[0];
+                buttonEl.disabled = true;
 			}
 			function getName(callback) {
 				let xhr = new XMLHttpRequest();
