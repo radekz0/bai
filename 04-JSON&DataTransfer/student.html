@@ -13,8 +13,14 @@
 		<script>
 			function init() {
 				getName(function(response) {
-					var name = JSON.parse(response);
-					console.log(name);
+					let obj = JSON.parse(response);
+					console.log(obj);
+					let nameString = obj.name + ', ' + obj.surname;
+					let inputElement = document.getElementsByTagName("p")[0];
+					let pElement = document.createElement("p");
+					let textItem = document.createTextNode(nameString);
+					pElement.appendChild(textItem);
+					inputElement.appendChild(pElement);
 				});
 			}
 			function getName(callback) {
