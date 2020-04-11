@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ready States</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Exchange Rates</h1>
+		<p>Click the button to get most recent exchange rates for EUR/USD/GBP!</p>
+        <input type="button" value="Make a connection" onclick="connect()">
+		
+		<script>
+			function connect(){
+                let currencies = ['USD', 'EUR', 'GBP'];
+                for(i in currencies){
+                    let method = 'GET';
+                    let URL = 'http://api.nbp.pl/api/exchangerates/rates/a/' + currencies[i] + '/last/10/?format=json';
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function(){
+                        if (this.readyState == 4 && this.status == 200) {
+                            let obj = JSON.parse(this.responseText);
+                            let rateString = obj.code + ' current exchange rate: ' + obj.rates[9].mid + ' as for: ' + obj.rates[9].effectiveDate;
+                            let inputElement = document.getElementsByTagName("p")[0];
+                            let pElement = document.createElement("p");
+                            let textItem = document.createTextNode(rateString);
+                            pElement.appendChild(textItem);
+                            inputElement.appendChild(pElement);
+                        }
+                    };
+                    xhr.open(method, URL);
+                    xhr.send();
+                }
+			}
+		</script>
+	</body>
+</html>
