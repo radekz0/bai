@@ -17,7 +17,8 @@
                     for(i in name){
                         let inputElement = document.getElementsByTagName("p")[1];
                         let pElement = document.createElement("p");
-                        let textItem = document.createTextNode(name[i].name + " " + name[i].surname + ", " + name[i].country);
+                        let num = i;
+                        let textItem = document.createTextNode(++num + '. ' + name[i].name + " " + name[i].surname + ", " + name[i].country);
                         pElement.appendChild(textItem);
                         inputElement.appendChild(pElement);
                     }
