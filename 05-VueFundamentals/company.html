@@ -2,8 +2,27 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .card {
+        width: 400px;
+        border: 1px solid black;
+        padding: 40px 100px 60px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 150%;
+        line-height: 40%;
+      }
+      </style>
 </head>
 <body>
+  <div class="card" id="app">
+      <p style="font-weight: bold;">{{(company).toUpperCase()}}</p>
+      <p>{{address}}</p>
+      <p>{{postcode}} {{city}}</p>
+      <p>tel. {{landline}}, {{mobile}}</p>
+      <a :href="web">http://www.unikpol.pl</a>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',
