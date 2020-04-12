@@ -4,6 +4,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="app">
+    DO WYKONANIA
+    <p v-for="(item, index) in todo">
+        {{++index}}. {{item}}
+    </p>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -12,7 +19,8 @@
           'Purchase two tickets to cinema',
           'Feed cat',
           'Pay cable bill',
-          'Go shopping'
+          'Go shopping' 
+          ]
       }
     });
   </script>
