@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <form @submit="addItem">
+        <span>Enter the book title:</span>
+        <input type="text" v-model="title">  
+        <span>Enter the author's name:</span>
+        <input type="text" v-model="authorName">  
+        <button type="submit" class="btn">Zapisz</button>
+    </form>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        title: '',
+        authorName: ''
+      },
+      methods: {
+        addItem(e) {
+                e.preventDefault();
+                console.log("Book title: " + this.title + " Author: " + this.authorName);
+            }
+      }
+    });
+  </script>
+
+</body>
+</html>
