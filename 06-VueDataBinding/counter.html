@@ -5,8 +5,8 @@
 </head>
 <body>
   <div id="app">
-        <button v-on:click="count" type="button" class="btn">Click me</button>
-        <p id="result"></p>
+        <p>Click the button!</p>
+        <input type="button" v-model="numberOfClicks" v-on:click="count" class="btn">
   </div>
   <script>
     var app = new Vue({
@@ -17,7 +17,6 @@
       methods: {
           count: function(){
             this.numberOfClicks ++;
-            document.getElementById("result").innerHTML = "You have clicked: " + this.numberOfClicks + " time(s)."
           }
       }
     });
