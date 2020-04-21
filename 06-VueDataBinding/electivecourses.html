@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>Choose your classes:</h3>
+    <input type="checkbox" id= "bai" value= "Bogate aplikacje internetowe" v-model="selectedClasses"> <label for="bai">Bogate aplikacje internetowe</label>
+    <br>
+    <input type="checkbox" id= "mihe" value= "Marketing i handel elektroniczny" v-model="selectedClasses"> <label for="mihe">Marketing i handel elektroniczny</label>
+    <br>
+    <input type="checkbox" id="pk" value="Programowanie kreatywne" v-model="selectedClasses"> <label for="pk">Programowanie kreatywne</label>
+    <br>
+    <input type="checkbox" id="misk" value="Modelowanie i symulacja komputerowa" v-model="selectedClasses"> <label for="misk">Modelowanie i symulacja komputerowa</label>
+    <br>
+    <input type="checkbox" id="ja" value="Język angielski" v-model="selectedClasses"> <label for="ja">Język angielski</label>
+    <p>You selected: {{calculateClassNumber}} classes.</p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        selectedClasses: []
+      },
+      computed: {
+        calculateClassNumber: function(){
+            return this.selectedClasses.length;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
