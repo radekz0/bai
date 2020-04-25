@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <film1></film1>
+    <film2></film2>
+    <film3></film3>
+  </div>
+</body>
+<script>
+  Vue.component('film1', {
+    template: 
+    `<div>
+      <h1>Obłędny Rycerz</h1>
+      <p>Rok produkcji: 2001</p>
+      <p>Rezyseria: Brian Helgeland</p>
+    </div>`
+  });
+  Vue.component('film2', {
+    template: 
+    `<div>
+      <h1>Django</h1>
+      <p>Rok produkcji: 2012</p>
+      <p>Rezyseria: Quentin Tarantino</p>
+    </div>`
+  });
+  Vue.component('film3', {
+    template: 
+    `<div>
+      <h1>Chłopcy z Ferajny</h1>
+      <p>Rok produkcji: 1990</p>
+      <p>Rezyseria: Martin Scorsese</p>
+    </div>`
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+    }
+  });
+</script>
+</html>
