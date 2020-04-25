@@ -7,24 +7,24 @@
   <h1>CV</h1>
   <div id="app">
     <span><b>Imie:</b></span>
-    <input type="text" v-model="imie">
+    <input type="text" v-model="cv.imie">
     <br>
     <br>
     <span><b>Nazwisko: </b></span>
-    <input type="text" v-model="nazwisko">
+    <input type="text" v-model="cv.nazwisko">
     <br>
     <br>
     <span><b>Wiek: </b></span> 
-    <input type="number" v-model="wiek">
+    <input type="number" v-model="cv.wiek">
     <br>
     <br>
     <span><b>Płeć: </b></span>
-    <input type="radio" id="mezczyzna" value="Mezczyzna" v-model="plec"> <label for="mezczyzna">Mezczyzna</label>
-    <input type="radio" id="kobieta" value="Kobieta" v-model="plec"> <label for="kobieta">Kobieta</label>
+    <input type="radio" id="mezczyzna" value="Mezczyzna" v-model="cv.plec"> <label for="mezczyzna">Mezczyzna</label>
+    <input type="radio" id="kobieta" value="Kobieta" v-model="cv.plec"> <label for="kobieta">Kobieta</label>
     <br>
     <br>
     <span><b>Wykształcenie:</b></span>
-    <select v-model="wyksztalcenie">
+    <select v-model="cv.wyksztalcenie">
         <option disabled value="">Proszę wybrać</option>
         <option>Brak</option>
         <option>Podstawowe</option>
@@ -34,22 +34,43 @@
     <br>
     <br>
     <span><b>Umiejętności: </b></span>
-    <input type="checkbox" id= "obsługa komputera" value= "Obsługa komputera" v-model="umiejetnosci"> <label for="obsługa komputera">Obsługa komputera</label>
-    <input type="checkbox" id="prawo jazdy" value="Prawo jazdy" v-model="umiejetnosci"> <label for="prawo jazdy">Prawo jazdy</label>
-    <input type="checkbox" id="kreatywność" value="Kreatywność" v-model="umiejetnosci"> <label for="kreatywność">Kreatywność</label>
-    <input type="checkbox" id="praca w zespole" value="Praca w zespole" v-model="umiejetnosci"> <label for="praca w zespole">Praca w zespole</label>
+    <input type="checkbox" id= "obsługa komputera" value= "Obsługa komputera" v-model="cv.umiejetnosci"> <label for="obsługa komputera">Obsługa komputera</label>
+    <input type="checkbox" id="prawo jazdy" value="Prawo jazdy" v-model="cv.umiejetnosci"> <label for="prawo jazdy">Prawo jazdy</label>
+    <input type="checkbox" id="kreatywność" value="Kreatywność" v-model="cv.umiejetnosci"> <label for="kreatywność">Kreatywność</label>
+    <input type="checkbox" id="praca w zespole" value="Praca w zespole" v-model="cv.umiejetnosci"> <label for="praca w zespole">Praca w zespole</label>
+    <br>
+    <br>
+    <button v-on:click="sendToLocalStorage()" >Zapisz</button>
+    <p>---------------------------------------------------------------</p>
+    <p>Kliknij, aby odczytać dane z local storage: </p>
+    <button v-on:click="getCvFromLocalStorage()" >Czytaj</button>
+    <div id="result"></div>
+    
   </div>
 
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        imie: '',
-        nazwisko: '',
-        wiek: '',
-        plec: '',
-        wyksztalcenie: '',
-        umiejetnosci: []
+          cv: {
+            imie: '',
+            nazwisko: '',
+            wiek: '',
+            plec: '',
+            wyksztalcenie: '',
+            umiejetnosci: []
+          }
+      },
+      methods: {
+        sendToLocalStorage: function(){
+            if(typeof(Storage) !== "undefined") {
+                localStorage.setItem('cv', JSON.stringify(this.cv));
+            }
+        },
+        getCvFromLocalStorage: function(){
+            console.log(JSON.parse(localStorage.getItem('cv')));
+            document.getElementById("result").innerHTML = localStorage.getItem('cv');
+        }
       }
     });
   </script>
