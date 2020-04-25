@@ -10,10 +10,11 @@
     <input type="text" v-model="todo">
     <button type="button" @click="add()">Add</button>
     <h3>To Do List</h3>
-    <p v-for="(item, index) in todos">
+    <p @dblclick="del(item)" v-for="(item, index) in todos">
       {{++index}}. {{item}}
     </p>
   </div>
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -24,6 +25,9 @@
       methods: {
         add: function() {
           this.todos.push(this.todo);
+        },
+        del: function(e){
+          this.todos = this.todos.filter(item => item !== e)
         }
       }
     });
