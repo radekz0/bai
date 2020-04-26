@@ -5,14 +5,17 @@
 </head>
 <body>
   <div id="app">
-    <converter></converter>
+    <converter v-bind:decimal="numbers[0]"></converter>
+    <converter v-bind:decimal="numbers[1]"></converter>
+    <converter v-bind:decimal="numbers[2]"></converter>
+    <converter v-bind:decimal="numbers[3]"></converter>
   </div>
 </body>
 <script>
   Vue.component('converter', {
+    props: ['decimal'],
     data: function () {
         return {
-            decimal: 0,
             binary: 0
         }
     },
@@ -24,16 +27,15 @@
     },
     template: 
     `<div>
-      <h1>Enter a decimal to get a binary representation:</h1>
-      <input type="number" v-model="decimal">
-      <button v-on:click="dec2binConverter()" >Convert</button>
-      <p id="result"></p>
+        <p id="result"></p>
+        <button v-on:click="dec2binConverter()" >Convert {{decimal}}</button>
     </div>`
   });
 
   var app = new Vue({
     el: '#app',
     data: {
+        numbers: [8, 170, 204, 3855]
     }
   });
 </script>
