@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <converter></converter>
+  </div>
+</body>
+<script>
+  Vue.component('converter', {
+    data: function () {
+        return {
+            decimal: 0,
+            binary: 0
+        }
+    },
+    methods: {
+        dec2binConverter: function(){
+            this.binary = (this.decimal >>> 0).toString(2);
+            document.getElementById("result").innerHTML = this.decimal + '(10) = ' + this.binary + '(2)';
+        }
+    },
+    template: 
+    `<div>
+      <h1>Enter a decimal to get a binary representation:</h1>
+      <input type="number" v-model="decimal">
+      <button v-on:click="dec2binConverter()" >Convert</button>
+      <p id="result"></p>
+    </div>`
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+    }
+  });
+</script>
+</html>
