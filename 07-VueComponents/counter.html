@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="dodaj()">Dodaj</button>  
+    <button v-on:click="odejmij()">Odejmij</button>  
+    <counter v-bind:numberofclicks="number"></counter>
+  </div>
+</body>
+<script>
+  Vue.component('counter', {
+    props: ['numberofclicks'],
+    template: 
+    `<div>
+      <p>Liczba kliknięć: {{ numberofclicks }}</p>
+    </div>`
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+        number: 0
+    },
+    methods: {
+        dodaj: function(){
+            this.number = this.number +1;
+        },
+        odejmij: function(){
+            if(this.number > 0) {
+                this.number = this.number -1;
+            }
+        }
+    }
+  });
+</script>
+</html>
